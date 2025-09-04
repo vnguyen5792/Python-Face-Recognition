@@ -15,8 +15,9 @@ color = (255, 255, 0)
 textSize, _ = cv.getTextSize('Detected Face', font, fontScale, thickness)
 textWidth, _ = textSize
 
-# loop runs if capturing has been initialized.
-while True: 
+# loop runs until the escape key is pressed
+k = -1
+while k != 27:
 
     # reads frames from a camera
     ret, img = cap.read() 
@@ -43,10 +44,8 @@ while True:
     cv.flip(img, 1)
     cv.imshow('img',img)
 
-    # Wait for Esc key to stop
+    # Wait for key press
     k = cv.waitKey(30) & 0xff
-    if k == 27:
-        break
 
 # Close the window
 cap.release()
